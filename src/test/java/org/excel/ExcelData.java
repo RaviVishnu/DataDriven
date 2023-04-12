@@ -16,65 +16,64 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelData {
 
-	//public static void main(String[] args) throws IOException {
-		
-	
-	//This File is used to Read Data
-	
+	// public static void main(String[] args) throws IOException {
+
+	// This File is used to Read Data
+
 	public String ReadValueFromExcel(String path, String SheetName, int rowNum, int cellNum) throws IOException {
 
-			String res = null;
+		String res = null;
 
-			File file = new File(path);
-			FileInputStream fileIn = new FileInputStream(file);
-			Workbook workbook = new XSSFWorkbook(fileIn);
-			Sheet sheet = workbook.getSheet(SheetName);
-			Row row = sheet.getRow(rowNum);
-			Cell cell = row.getCell(cellNum);
-			CellType type = cell.getCellType();
+		File file = new File(path);
+		FileInputStream fileIn = new FileInputStream(file);
+		Workbook workbook = new XSSFWorkbook(fileIn);
+		Sheet sheet = workbook.getSheet(SheetName);
+		Row row = sheet.getRow(rowNum);
+		Cell cell = row.getCell(cellNum);
+		CellType type = cell.getCellType();
 
-			switch (type) {
+		switch (type) {
 
-			case STRING:
+		case STRING:
 
-				res = cell.getStringCellValue();
-				break;
+			res = cell.getStringCellValue();
+			break;
 
-			case NUMERIC:
-				if (DateUtil.isCellDateFormatted(cell)) {
+		case NUMERIC:
+			if (DateUtil.isCellDateFormatted(cell)) {
 
-					Date dateCellValue = cell.getDateCellValue();
-					SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy");
+				Date dateCellValue = cell.getDateCellValue();
+				SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yy");
 
-					res = dateFormat.format(dateCellValue);
-
-				}
-
-				else {
-
-					double numericCellValue = cell.getNumericCellValue();
-					long check = Math.round(numericCellValue);
-
-					if (check == numericCellValue) {
-
-						res = String.valueOf(check);
-
-					} else {
-
-						res = String.valueOf(check);
-
-					}
-
-				}
-				break;
-
-			default:
-
-				break;
+				res = dateFormat.format(dateCellValue);
 
 			}
-			return res;
+
+			else {
+
+				double numericCellValue = cell.getNumericCellValue();
+				long check = Math.round(numericCellValue);
+
+				if (check == numericCellValue) {
+
+					res = String.valueOf(check);
+
+				} else {
+
+					res = String.valueOf(check);
+
+					;
+
+				}
+
+			}
+			break;
+
+		default:
+
+			break;
+
 		}
+		return res;
 	}
-	
-	
+}
