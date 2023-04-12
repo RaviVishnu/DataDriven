@@ -61,16 +61,16 @@ public class ExcelData {
 
 					} else {
 
-						res = String.valueOf(numericCellValue);
+						res = String.valueOf(check);
 
 					}
 
 				}
 				break;
 
-			default:
+		//	default:
 
-				break;
+			//	break;
 
 			}
 			return res;
