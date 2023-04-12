@@ -19,7 +19,7 @@ public class ExcelData {
 	//public static void main(String[] args) throws IOException {
 		
 	
-	//This File is used to Read Data From Excel in String Format (DataDriven)
+	//This File is used to Read Data
 	
 	public String ReadValueFromExcel(String path, String SheetName, int rowNum, int cellNum) throws IOException {
 
