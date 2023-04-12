@@ -61,7 +61,7 @@ public class ExcelData {
 
 					} else {
 
-						res = String.valueOf(check);
+						res = String.valueOf(numericCellValue);
 
 					}
 
